@@ -21,3 +21,7 @@ db.any('SELECT * FROM todos where id=$1'
     });
 };
 getTodo(2);
+
+module.exports = {
+    getTodo
+};
