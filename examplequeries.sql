@@ -24,3 +24,6 @@ select * from todos;
 update todos
 set title='cook amazing dinner'
 where id=3;
+-- deleting stuff
+delete from todos 
+where id=3;
