@@ -28,8 +28,14 @@ getAll()
 //     });
 
 // getTodo(2);
-
+function getPending () {
+    return db.any('select * from todos where isdone=false');
+}
+getPending()
+    .then((data) => {console.log(data);})
+    .catch((error) => {console.log(error);});
 module.exports = {
     getTodo,
-    getAll
+    getAll,
+    getPending
 };
