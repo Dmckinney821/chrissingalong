@@ -39,7 +39,9 @@ function searchByTitle(searchString) {
     return db.any("select * from todos where title ilike '%$1#%", [searchString]);}
 function deleteById() {
     return db.result('delete from todos where id=3', [id])}
-
+function setFinished(id, isdone) {
+    return db.result('update todos set isdone=$1 where id=$2', [isdone, id])
+}
 
 
     module.exports = {
@@ -48,5 +50,6 @@ function deleteById() {
     getPending,
     getFinished,
     searchByTitle,
-    deleteById
+    deleteById,
+    setFinished
 };
