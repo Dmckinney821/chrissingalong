@@ -42,6 +42,12 @@ function deleteById() {
 function setFinished(id, isdone) {
     return db.result('update todos set isdone=$1 where id=$2', [isdone, id])
 }
+function setTitle(id, newTitle) {
+    return db.result("update todos set title='$1#' where id=$2'", [title, id])
+}
+function setFinished(id, isdone) {
+    return db.result('update todos set isdone=$1 where id=$2', [isdone, id])
+}
 
 
     module.exports = {
@@ -51,5 +57,7 @@ function setFinished(id, isdone) {
     getFinished,
     searchByTitle,
     deleteById,
-    setFinished
+    setFinished,
+    setTitle,
+    
 };
