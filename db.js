@@ -1,13 +1,11 @@
 
 const pgp = require('pg-promise')();
-
 const cn = {
     host: 'localhost',
     port: 5432,
     database: 'super-todo-app',
     user: 'postgres',
     password: ''
-
 };
 const db = pgp(cn);
 function getTodo(id) {
@@ -25,7 +23,6 @@ getTodo(2)
      .catch(function(error) {
         console.log(error);
     });
-
 getTodo(2);
 function getPending () {
     return db.any('select * from todos where isdone=false');
@@ -35,14 +32,13 @@ getPending()
     .catch((error) => {console.log(error);});
 function getFinished() {
     return db.any('select * from todos where isdone=true');}
-
 getFinished()
     .then((data) => {console.log(data);})
     .catch((error) => {console.log(error);});
-
 function searchByTitle(searchString) {
-    return db.any("select * from todos where title ilike '%$1%", [searchString]);}
-
+    return db.any("select * from todos where title ilike '%$1#%", [searchString]);}
+function deleteById() {
+    return db.result('delete from todos where id=3', [id])}
 
 
 
@@ -51,5 +47,6 @@ function searchByTitle(searchString) {
     getAll,
     getPending,
     getFinished,
-    searchByTitle
+    searchByTitle,
+    deleteById
 };
