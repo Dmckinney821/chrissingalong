@@ -11,7 +11,7 @@ const cn = {
 };
 const db = pgp(cn);
 function getTodo(id) {
-db.any('SELECT * FROM todos where id=$1'
+db.oneOrNone('SELECT * FROM todos where id=$1'
 , [id])
 .then(function(data) {
     console.log(data);
