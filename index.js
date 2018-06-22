@@ -12,6 +12,19 @@ app.get('/', (req, res) => {Todo.getAll()
         console.log(error);});
     });
 
-    app.listen(3000, () => {
+
+app.get('/:id', (req, res) => {
+    Todo.getTodo(req.params.id)
+    .then((data) => {
+        console.log(data);
+        res.send(data);
+    })
+    .catch((error) => {
+        console.log(error);});
+    });
+
+
+
+app.listen(3000, () => {
 console.log('Your server is running!');
     });
