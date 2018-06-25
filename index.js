@@ -1,10 +1,13 @@
+
+
 const express = require('express');
 const app = express();
 
 const expressHbs = require('express-handlebars');
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
-
+const static = express.static;
+app.use(static('public'));
 const Todo = require('./db');
 // only using route handlers so no handlebars here
 app.get('/', (req, res) => {Todo.getAll()
