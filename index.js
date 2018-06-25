@@ -32,10 +32,10 @@ app.post('/new', (req, res) => {console.log(req.body);
     // res.send('Hey you submitted the form')
     Todo.add(req.body.title)
     .then((data) => {
-        console.log(data);
-        res.send(data);
-    });
-
+        // console.log(data);
+        // res.send(data);
+    // });
+        res.redirect(`/${data.id}`);})
 });
     
 
