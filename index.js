@@ -21,18 +21,22 @@ app.get('/', (req, res) => {Todo.getAll()
     .catch((error) => {
         console.log(error);});
     });
-
+app.get('/new', (req, res) => {
+        res.render('todo-create-page');
+    })
+    
+    
 
 app.get('/:id', (req, res) => {
     Todo.getTodo(req.params.id)
     .then((data) => {
         console.log(data);
-        res.send(data);
+        // res.send(data);
+        res.render('todo-detail-page', data);
     })
     .catch((error) => {
         console.log(error);});
     });
-
 
 
 app.listen(3000, () => {
