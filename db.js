@@ -18,7 +18,7 @@ function getFinished() {return db.any('select * from todos where isdone=true');}
 function searchByTitle(searchString) {return db.any("select * from todos where title ilike '%$1#%", [searchString]);}
 function deleteById() {return db.result('delete from todos where id=3', [id])}
 function setFinished(id, isdone) {return db.result('update todos set isdone=$1 where id=$2', [isdone, id])}
-function setTitle(id, newTitle) {return db.result("update todos set title='$1#' where id=$2'", [title, id])}
+function setTitle(id, title) {return db.result("update todos set title='$1#' where id=$2", [title, id])}
 function add(title) {return db.one("insert into todos (title, isdone) values ('$1#', false) returning id", [title]);}
 // add('drink some bouton')
 //     .then((data) => {console.log(data);})
