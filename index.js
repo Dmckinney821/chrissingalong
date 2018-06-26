@@ -9,6 +9,7 @@ const express = require('express');
 const app = express();
 
 const setupAuth = require('./auth');
+const ensureAuthenticated = require('./auth').ensureAuthenticated;
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,7 +34,7 @@ app.get('/', (req, res) => {Todo.getAll()
     .catch((error) => {
         console.log(error);});
     });
-app.get('/new', (req, res) => {
+app.get('/new', ensureAuthenticated, (req, res) => {
         res.render('todo-create-page');
     })
 
