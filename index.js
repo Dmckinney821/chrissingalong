@@ -1,8 +1,14 @@
 
 
 
+
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require('express');
 const app = express();
+
+const setupAuth = require('./auth');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,6 +18,8 @@ app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 const static = express.static;
 app.use(static('public'));
+
+setupAuth(app);
 const Todo = require('./db');
 // only using route handlers so no handlebars here
 app.get('/', (req, res) => {Todo.getAll()
